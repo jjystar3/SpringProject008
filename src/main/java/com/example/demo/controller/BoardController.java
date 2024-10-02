@@ -20,12 +20,11 @@ public class BoardController {
 
 	@Autowired // 컨테이너에 등록된 빈 주입받기
 	BoardService service;
-	
-	// 메인화면을 반환하는 메소드
-	@GetMapping("/main")
-	public void main() {
-		
-	}
+
+    // 메인화면
+//    @GetMapping("/main")
+//    public void main() {
+//    }
 	
 //	// 목록화면을 반환하는 메소드
 //	@GetMapping("/list") // /board/list
