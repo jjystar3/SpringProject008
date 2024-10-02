@@ -49,6 +49,8 @@ public class MemberRepositoryTest2 {
 	public void 회원삭제() {
 		
 		// boardRepository에 작성자를 기준으로 게시물을 일괄 삭제하는 메소드 추가
+		// 회원 엔티티로 데이터를 추가할 때: 모든 데이터 작성
+		// 회원 엔티티를 이용할 때: PK만 작성
 
 		Member member = Member.builder().id("user1").build();
 
