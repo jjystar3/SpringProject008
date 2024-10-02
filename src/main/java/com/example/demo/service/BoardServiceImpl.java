@@ -93,13 +93,12 @@ public class BoardServiceImpl implements BoardService {
 		Optional<Board> optional = repository.findById(no);
 		
 		if(optional.isPresent()) {
-			
+
 			Board board = optional.get();
 			
-			// 기존 엔티티에서 제목, 내용, 작성자 변경
+			// 기존 엔티티에서 제목, 내용 변경
 			board.setTitle(dto.getTitle());
 			board.setContent(dto.getContent());
-			board.setWriter(dto.getWriter());
 			
 			// 데이터베이스에 업데이트
 			repository.save(board);

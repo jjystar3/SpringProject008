@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 
 import com.example.demo.dto.BoardDTO;
 import com.example.demo.entity.Board;
+import com.example.demo.entity.Member;
 
 public interface BoardService {
 
@@ -29,11 +30,15 @@ public interface BoardService {
 		
 		//시간 필드는 생략
 		
+		// DTO에서 꺼낸 문자열을 Member 객체로 감싸고
+		// 그 후에 작성자 필드에 사용
+		Member member = Member.builder().id(dto.getWriter()).build();
+		
 		Board entity = Board.builder()
 				.no(dto.getNo())
 				.title(dto.getTitle())
 				.content(dto.getContent())
-				.writer(dto.getWriter())
+				.writer(member)
 				.build();
 		return entity;
 	}
@@ -45,7 +50,7 @@ public interface BoardService {
 				.no(entity.getNo())
 				.title(entity.getTitle())
 				.content(entity.getContent())
-				.writer(entity.getWriter())
+				.writer(entity.getWriter().getId())
 				.regDate(entity.getRegDate())
 				.modDate(entity.getModDate())
 				.build();
