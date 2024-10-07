@@ -46,10 +46,16 @@ public class MemberController {
 
 	}
 	
+	// 상세화면을 반환하는 메소드
 	@GetMapping("/read")
+	// /member/read?id=user1&page=1
+	// /member/read?id=user1
 	public void read(@RequestParam(name = "id") String id, @RequestParam(name = "page", defaultValue = "0") int page, Model model) { //파라미터 추가
+		// 전달받은 파라미터로 회원 조회
 		MemberDTO dto = service.read(id);
+		// 조회한 회원정보를 화면에 전달
 		model.addAttribute("dto", dto); //사용자 정보
+		// 페이지번호를 화면에 전달
 		model.addAttribute("page", page); //페이지번호 (화면을 이동해도 페이지번호를 유지하기 위해서)
 	}
 }
